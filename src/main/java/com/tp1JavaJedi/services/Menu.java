@@ -1,0 +1,9 @@
+package com.tp1JavaJedi.services;
+
+public interface Menu {
+
+
+
+    public void initMenu();
+
+}
