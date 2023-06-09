@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Equipo {
+
     private String nombre;
     private LocalDate fechaCreacion;
     private Entrenador entrenador;
@@ -12,11 +13,9 @@ public class Equipo {
     public Equipo() {
     }
 
-    public Equipo(String nombre, LocalDate fechaCreacion, Entrenador entrenador, List<Jugador> jugadores) {
+    public Equipo(String nombre, LocalDate fechaCreacion){
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
-        this.entrenador = entrenador;
-        this.jugadores = jugadores;
     }
 
     public String getNombre() {

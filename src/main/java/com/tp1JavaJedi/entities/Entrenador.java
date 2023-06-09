@@ -1,8 +1,7 @@
 package com.tp1JavaJedi.entities;
 
-import java.time.LocalDate;
-
 public class Entrenador {
+
     private String nombre;
     private String apellido;
     private int edad;
@@ -10,7 +9,7 @@ public class Entrenador {
     public Entrenador() {
     }
 
-    public Entrenador(String nombre, String apellido, int edad) {
+    public Entrenador(String nombre, String apellido, int edad){
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -39,4 +38,5 @@ public class Entrenador {
     public void setEdad(int edad) {
         this.edad = edad;
     }
+
 }

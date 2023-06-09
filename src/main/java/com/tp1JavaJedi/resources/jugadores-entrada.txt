@@ -1,0 +1,5 @@
+1;Pedro;Picapiedra;1,65;5;1;Si;1;DEFENSOR
+2;Juanito;Cazares;1,68;4;1;No;2;MEDIOCAMPISTA
+3;German;Cano;1,65;5;1;Si;No;DELANTERO
+4;Augusto;Solari;1,68;4;1;No;2;MEDIOCAMPISTA
+5;Pato;Fillol;1,88;4;1;No;2;ARQUERO

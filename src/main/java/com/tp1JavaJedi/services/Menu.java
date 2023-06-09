@@ -4,6 +4,6 @@ public interface Menu {
 
 
 
-    public void initMenu();
+    void initMenu();
 
 }

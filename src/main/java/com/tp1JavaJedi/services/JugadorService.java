@@ -1,11 +1,13 @@
 package com.tp1JavaJedi.services;
 
+import com.tp1JavaJedi.entities.Equipo;
 import com.tp1JavaJedi.entities.Jugador;
 
-import java.util.Scanner;
+import java.util.List;
 
 public interface JugadorService {
 
-    public Jugador cargaJugador(Scanner scanner);
+     Jugador cargaJugador(Equipo equipo, boolean capitanCargado);
+     List<Jugador> cargaJugadores(Equipo equipo, int opcion);
 
 }
