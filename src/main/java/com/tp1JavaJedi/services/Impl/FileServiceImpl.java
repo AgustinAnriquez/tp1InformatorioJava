@@ -61,6 +61,7 @@ public class FileServiceImpl implements FileService {
             writer.write(linea);
             writer.newLine();
             }
+            writer.close();
         }catch (IOException e){
             throw new RuntimeException(e);
         }

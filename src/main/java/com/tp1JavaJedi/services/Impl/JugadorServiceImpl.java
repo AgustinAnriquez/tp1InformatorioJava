@@ -62,7 +62,7 @@ public class JugadorServiceImpl implements JugadorService {
         }
     }
     public List<Jugador> cargaPorArhivo(Equipo equipo){
-        return fileService.cargaJugadoresPorArchivo("com/tp1JavaJedi/resources/jugadores-entrada.txt", equipo);
+        return fileService.cargaJugadoresPorArchivo("src/main/java/com/tp1JavaJedi/resources/jugadores-entrada.txt", equipo);
     }
 
     @Override

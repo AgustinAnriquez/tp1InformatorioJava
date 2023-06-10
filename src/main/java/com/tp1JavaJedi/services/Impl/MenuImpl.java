@@ -73,7 +73,7 @@ public class MenuImpl implements Menu {
             case 1 ->{
                 Equipo equipo = equipoService.cargaEquipo();
                 int opcionExportarJugadores = Utils.getOpcionConValidacion(opcionesExportarJugadores);
-                if (opcionExportarJugadores == 1)fileService.exportarJugadores(equipo.getJugadores(), "com/tp1JavaJedi/resources/jugadores-salida.txt");
+                if (opcionExportarJugadores == 1)fileService.exportarJugadores(equipo.getJugadores(), "src/main/java/com/tp1JavaJedi/resources/jugadores-salida.txt");
                 InitData.listaEquipos.add(equipo);
             }
             case 2 -> {
