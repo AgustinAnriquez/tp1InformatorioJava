@@ -1,5 +1,6 @@
 package com.tp1JavaJedi.services.Impl;
 
+import com.tp1JavaJedi.init.InitData;
 import com.tp1JavaJedi.services.FileService;
 import com.tp1JavaJedi.utils.InitScanner;
 import com.tp1JavaJedi.utils.Utils;
@@ -59,21 +60,41 @@ public class JugadorServiceImpl implements JugadorService {
             scanner.next();
             return cargaJugador(equipo, capitanCargado);
         }
-
     }
-
-    public List<Jugador> cargaJugadores(Equipo equipo, int opcion){
-        if (opcion == 1){
-            return cargaManual(equipo);
-        }else {
-            return cargaPorArhivo(equipo);
-        }
-    }
-    private List<Jugador> cargaPorArhivo(Equipo equipo){
+    public List<Jugador> cargaPorArhivo(Equipo equipo){
         return fileService.cargaJugadoresPorArchivo("com/tp1JavaJedi/resources/jugadores-entrada.txt", equipo);
     }
 
-    private List<Jugador> cargaManual(Equipo equipo) {
+    @Override
+    public void listarJugador(Jugador jugador) {
+        System.out.println("Datos del jugador");
+        System.out.println("Nombre: "+ jugador.getNombre());
+        System.out.println("Apellido: "+ jugador.getApellido());
+        System.out.println("Posicion: "+ jugador.getPosicion().name());
+        System.out.println("Capitan: "+ (jugador.isEsCapitan()? "Si": "No"));
+        System.out.println("Nombre del equipo: " + jugador.getEquipo().getNombre());
+    }
+
+    @Override
+    public void buscarJugador(String nombre) {
+        List<Jugador> jugadores = InitData.listaJugadores;
+        if (jugadores.isEmpty()){
+            System.out.println("No hay jugadores cargados");
+        }else{
+            Jugador jugadorEncontrado = jugadores.stream()
+                    .filter(jugador -> jugador.getNombre().equals(nombre))
+                    .findFirst()
+                    .orElse(null);
+
+            if (jugadorEncontrado != null) {
+                listarJugador(jugadorEncontrado);
+            } else {
+                System.out.println("Jugador no encontrado");
+            }
+        }
+    }
+
+    public List<Jugador> cargaManual(Equipo equipo) {
         System.out.println("Ingrese cantidad de jugadores que desea cargar para este equipo");
         int cantJugadores = scanner.nextInt();
         List<Jugador> jugadores = new ArrayList<>();
@@ -83,9 +104,18 @@ public class JugadorServiceImpl implements JugadorService {
             if(jugador.isEsCapitan()){
                 capitanCargado = true;
             }
+            InitData.listaJugadores.add(jugador);
             jugadores.add(jugador);
         }
         return jugadores;
+    }
+
+    public Jugador buscarCapitan(Equipo equipo){
+        List<Jugador> jugadores = equipo.getJugadores();
+        return jugadores.stream()
+                .filter(jugador -> jugador.isEsCapitan())
+                .findFirst()
+                .orElse(null);
     }
 
 

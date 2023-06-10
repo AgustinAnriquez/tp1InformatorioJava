@@ -9,5 +9,6 @@ import java.util.List;
 public interface FileService {
 
     List<Jugador> cargaJugadoresPorArchivo(String path, Equipo equipo);
+    void exportarJugadores(List<Jugador> jugadores, String pathDestino);
 
 }

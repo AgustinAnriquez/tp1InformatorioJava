@@ -3,10 +3,13 @@ package com.tp1JavaJedi.services.Impl;
 import com.tp1JavaJedi.entities.Equipo;
 import com.tp1JavaJedi.entities.Jugador;
 import com.tp1JavaJedi.entities.enums.Posicion;
+import com.tp1JavaJedi.init.InitData;
 import com.tp1JavaJedi.services.FileService;
 import org.apache.commons.io.FileUtils;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -36,10 +39,29 @@ public class FileServiceImpl implements FileService {
                 int nroCamiseta = Integer.parseInt(partes[7]);
                 Posicion posicion = Posicion.valueOf(partes[8]);
                 Jugador jugador = new Jugador(id, nombre, apellido, altura, cantGoles, cantPartidos, esCapitan, nroCamiseta, equipo, posicion);
+                InitData.listaJugadores.add(jugador);
                 jugadores.add(jugador);
             }
             return jugadores;
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void exportarJugadores(List<Jugador> jugadores, String pathDestino) {
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(pathDestino));
+            for(Jugador jugador: jugadores){
+                String linea = jugador.getNombre() + ";" + jugador.getApellido() + ";"
+                        + jugador.getAltura() + ";" + jugador.getCantGoles()
+                        + ";" + jugador.getCantPartidos() + ";"
+                        + ((jugador.isEsCapitan())? "Si" : "No") + ";" + jugador.getNroCamiseta() + ";"
+                        + jugador.getPosicion().name();
+            writer.write(linea);
+            writer.newLine();
+            }
+        }catch (IOException e){
             throw new RuntimeException(e);
         }
     }

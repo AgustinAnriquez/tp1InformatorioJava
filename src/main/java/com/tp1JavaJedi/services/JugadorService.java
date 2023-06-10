@@ -8,6 +8,14 @@ import java.util.List;
 public interface JugadorService {
 
      Jugador cargaJugador(Equipo equipo, boolean capitanCargado);
-     List<Jugador> cargaJugadores(Equipo equipo, int opcion);
+     List<Jugador> cargaManual(Equipo equipo);
+     List<Jugador> cargaPorArhivo(Equipo equipo);
+
+     void listarJugador(Jugador jugador);
+
+     void buscarJugador(String nombre);
+
+     Jugador buscarCapitan(Equipo equipo);
+
 
 }
